@@ -1,11 +1,13 @@
 import java.sql.*;
 import java.sql.DriverManager;
-import com.mysql.jdbc.Connection;   //需要这个jar包 mysql-connector-java-5.1.49.jar
+import com.mysql.jdbc.Connection;
 
 import java.util.*;
 
 public class InsertMysqlTest {
 
+
+    //mysql连接
     public static Connection getConnection() {
 
         String driver = "com.mysql.jdbc.Driver";
@@ -23,6 +25,7 @@ public class InsertMysqlTest {
         return conn;
     }
 
+    //单条插入
     public static void insertTest1() {
 
         Long startTime = System.currentTimeMillis();
@@ -59,6 +62,7 @@ public class InsertMysqlTest {
     }
 
 
+    //每1w条插入一次
     public static void insertTest2() {
 
         Long startTime = System.currentTimeMillis();
@@ -86,12 +90,6 @@ public class InsertMysqlTest {
                     } else {
                         sql.append("('"+ orderNo  +"', 1, 100, 0, 100),");
                     }
-                /*    sql.append("insert into orders(order_no, user_id, order_amount, shipping_amount, pay_amount)  " +
-                            "values");
-
-
-                            "insert into orders(order_no, user_id, order_amount, shipping_amount, pay_amount)  " +
-                            "values ('"+ orderNo  +"', 1, 100, 0, 100)";*/
                     i++;
 
                 }
