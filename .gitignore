@@ -3,3 +3,5 @@
 *.iml
 output/
 target/
+.DS_Store
+libs/
