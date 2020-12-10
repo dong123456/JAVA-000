@@ -17,7 +17,7 @@ public class OrderPO {
         return orderId;
     }
 
-    public void setId(int id) {
+    public void setId(int orderId) {
         this.orderId = orderId;
     }
 

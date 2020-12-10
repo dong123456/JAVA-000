@@ -5,6 +5,8 @@ import com.jike.week.dao.po.OrderPO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+
 
 /**
  *
@@ -21,8 +23,16 @@ public class OrderService {
         return orderMapper.findOrderById(userId, orderId);
     }
 
+    public List<OrderPO> findOrderList(int userId, int page, int pageSize) {
+        return orderMapper.findOrderList(userId, page, pageSize);
+    }
+
     public int insert(OrderPO orderPO) {
         return orderMapper.insert(orderPO);
+    }
+
+    public int update(OrderPO orderPO) {
+        return orderMapper.update(orderPO);
     }
 
 //    @Override
