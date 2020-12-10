@@ -35,9 +35,9 @@ public class OrderService {
         return orderMapper.update(orderPO);
     }
 
-//    @Override
-//    boolean updateById(OrderInfo entity);
+    public int delete(int userId, int orderId) {
+        return orderMapper.delete(userId, orderId);
+    }
 
- //   @Override updateById(OrderINfo entity);
 
 }

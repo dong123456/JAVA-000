@@ -22,16 +22,16 @@ import java.util.Map;
 @Slf4j
 @RestController
 public class OrderController {
-    /**
-     * 处理逻辑
-     *
-     * @param
-     * @return 结果
-     */
 
     @Autowired
     OrderService orderService;
 
+    /**
+     * 查询单条订单
+     *
+     * @param
+     * @return 结果
+     */
     @RequestMapping(value = "/order/findByid/{userId}/{orderId}", method = RequestMethod.GET)
     public Map<String, Object> getOrderInfo( @PathVariable int userId, @PathVariable int orderId ){
         Map<String, Object> result = Maps.newHashMap();
@@ -45,6 +45,12 @@ public class OrderController {
     }
 
 
+    /**
+     * 查询多条订单
+     *
+     * @param
+     * @return 结果
+     */
     @RequestMapping(value = "/order/findAll/{userId}/{page}", method = RequestMethod.GET)
     public Map<String, Object> getOrderList( @PathVariable int userId, @PathVariable int page ){
         Map<String, Object> result = Maps.newHashMap();
@@ -61,7 +67,12 @@ public class OrderController {
         return result;
     }
 
-
+    /**
+     * 插入单条订单
+     *
+     * @param
+     * @return 结果
+     */
     @RequestMapping(value = "/order/insert/{userId}", method = RequestMethod.POST)
     public Map<String, Object> insertOrderInfo( @PathVariable int userId, @RequestBody OrderPO orderPO ){
         //入参校验 todo
@@ -77,6 +88,13 @@ public class OrderController {
 
     }
 
+    /**
+     * 更新单条订单
+     *
+     * @param
+     * @return 结果
+     */
+
     @RequestMapping(value = "/order/update/{userId}/{orderId}", method = RequestMethod.POST)
     public Map<String, Object> updateOrderInfo( @PathVariable int userId, @PathVariable int orderId, @RequestBody OrderPO orderPO ){
         //入参校验 todo
@@ -86,6 +104,27 @@ public class OrderController {
 
         Map<String, Object> result = Maps.newHashMap();
         int insertId = orderService.update(orderPO);
+
+        result.put("status", 0);
+        return result;
+
+    }
+
+
+    /**
+     * 删除单条订单
+     *
+     * @param
+     * @return 结果
+     */
+
+    @RequestMapping(value = "/order/delete/{userId}/{orderId}", method = RequestMethod.POST)
+    public Map<String, Object> deleteOrderInfo( @PathVariable int userId, @PathVariable int orderId){
+        //入参校验 todo
+
+
+        Map<String, Object> result = Maps.newHashMap();
+        int insertId = orderService.delete(userId, orderId);
 
         result.put("status", 0);
         return result;

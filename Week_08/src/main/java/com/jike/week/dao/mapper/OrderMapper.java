@@ -29,4 +29,10 @@ public interface OrderMapper {
      */
     int update(OrderPO orderPO);
 
+    /**
+     * 删除
+     */
+    int delete(@Param("userId") int userId, @Param("orderId") int orderId);
+
+
 }
