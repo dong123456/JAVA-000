@@ -21,6 +21,10 @@ public class OrderService {
         return orderMapper.findOrderById(userId, orderId);
     }
 
+    public int insert(OrderPO orderPO) {
+        return orderMapper.insert(orderPO);
+    }
+
 //    @Override
 //    boolean updateById(OrderInfo entity);
 

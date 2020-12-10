@@ -42,4 +42,19 @@ public class OrderController {
         return result;
     }
 
+    @RequestMapping(value = "/order/insert/{userId}", method = RequestMethod.POST)
+    public Map<String, Object> insertOrderInfo( @PathVariable int userId, @RequestBody OrderPO orderPO ){
+        //入参校验 todo
+
+
+        orderPO.setUserId(userId);
+
+        Map<String, Object> result = Maps.newHashMap();
+        int insertId = orderService.insert(orderPO);
+
+        result.put("status", 0);
+        return result;
+
+    }
+
 }
