@@ -5,6 +5,8 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import io.kimmking.rpcfx.api.RpcfxRequest;
 import io.kimmking.rpcfx.api.RpcfxResolver;
 import io.kimmking.rpcfx.api.RpcfxResponse;
+import io.kimmking.rpcfx.exception.RpcException;
+import okhttp3.internal.Internal;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -46,14 +48,15 @@ public class RpcfxInvoker {
             response.setResult(JSON.toJSONString(result, SerializerFeature.WriteClassName));
             response.setStatus(true);
             return response;
-        } catch ( IllegalAccessException | InvocationTargetException e) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
 
             // 3.Xstream
 
             // 2.封装一个统一的RpcfxException
             // 客户端也需要判断异常
-            e.printStackTrace();
-            response.setException(e);
+            // throw new RpcException("未找到server端方法", 1001);
+            // e.printStackTrace();
+            response.setException(new RpcException(e.getMessage(), 1001));
             response.setStatus(false);
             return response;
         }

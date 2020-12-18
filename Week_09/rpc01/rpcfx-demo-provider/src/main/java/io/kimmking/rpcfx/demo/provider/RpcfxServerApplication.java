@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"io.kimmking.rpcfx.*", "io.kimmking.rpcfx.exception"})
 @RestController
 public class RpcfxServerApplication {
 
