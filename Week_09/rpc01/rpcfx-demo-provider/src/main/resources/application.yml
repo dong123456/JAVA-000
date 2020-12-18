@@ -1,6 +1,10 @@
 server:
   port: 8080
   
- # profiles:
- #   active: true
+  profiles:
+    active: true
+
+logging:
+  level: info
+
 
